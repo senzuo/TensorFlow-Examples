@@ -16,7 +16,14 @@ can be converted to a graph that can be further optimized and/or extracted
 for deployment in production without changing code. " - Rajat Monga
 
 '''
-from __future__ import absolute_import, division, print_function
+
+# 总结
+# 1.格式化输出 %i整数  %s字符
+# 2.兼容Numpy,可以混用,混用后numpy转为tensor
+# 3.set Eager API后,所有tensor均为EagerTensor
+
+
+# from __future__ import absolute_import, division, print_function
 
 import numpy as np
 import tensorflow as tf
@@ -25,10 +32,10 @@ import tensorflow.contrib.eager as tfe
 # Set Eager API
 print("Setting Eager mode...")
 tfe.enable_eager_execution()
-
 # Define constant tensors
 print("Define constant tensors")
 a = tf.constant(2)
+# 调试的时候a中不能直接找到具体数据值!
 print("a = %i" % a)
 b = tf.constant(3)
 print("b = %i" % b)
@@ -65,4 +72,4 @@ print("Iterate through Tensor 'a':")
 for i in range(a.shape[0]):
     for j in range(a.shape[1]):
         print(a[i][j])
-
+print('over')
